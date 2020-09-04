@@ -1,0 +1,30 @@
+version: "2.4"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+      args:
+        - NODE_ENV=production
+    command: sh -c "
+      npm start
+      "
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+  cypress:
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    command: /opt/node_app/app/docker/wait-for-it.sh app:5000 --timeout=0 -- cypress run
+    volumes:
+      - .:/opt/node_app/app:delegated
+      - notused:/opt/node_app/app/node_modules
+    environment:
+      - CYPRESS_baseUrl=http://host.docker.internal:5000/
+    depends_on:
+      - app
+
+volumes:
+  notused:

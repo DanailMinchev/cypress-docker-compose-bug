@@ -1,0 +1,27 @@
+{
+  "name": "cypress-docker-compose-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve public",
+    "test": "start-server-and-test start http://localhost:5000 cy:run",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanailMinchev/cypress-docker-compose-bug.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanailMinchev/cypress-docker-compose-bug/issues"
+  },
+  "homepage": "https://github.com/DanailMinchev/cypress-docker-compose-bug#readme",
+  "devDependencies": {
+    "cypress": "5.1.0",
+    "start-server-and-test": "1.11.3"
+  }
+}
